@@ -54,7 +54,7 @@ const BlogDetailed = () => {
       {/* Hero Section */}
       <div className="relative h-[500px] overflow-hidden">
         <img
-          src={`http://localhost:3000/${myData.img}`}
+          src={`https://blog-app-backend-cyan.vercel.app/${myData.img}`}
           alt={myData.title}
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -187,7 +187,7 @@ const BlogDetailed = () => {
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
-                    src={`http://localhost:3000/${relatedBlog.img}`}
+                    src={`https://blog-app-backend-cyan.vercel.app/${relatedBlog.img}`}
                     alt={relatedBlog.title}
                     className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
                     onError={(e) => {

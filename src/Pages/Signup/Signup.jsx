@@ -28,7 +28,7 @@ const Signup = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await axios.post("http://localhost:3000/signin", formData);
+      const res = await axios.post("https://blog-app-backend-cyan.vercel.app/signin", formData);
       alert(res.data.message)
       navigate('/login')
     } catch (error) {

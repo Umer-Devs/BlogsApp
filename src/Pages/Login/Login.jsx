@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await axios.post("http://localhost:3000/login", formData);
+      const res = await axios.post("https://blog-app-backend-cyan.vercel.app/login", formData);
       localStorage.setItem("username", res.data.user.username)
       alert(res.data.message);
       setTimeout(() => {

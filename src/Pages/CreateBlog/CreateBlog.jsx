@@ -67,7 +67,7 @@ const CreateBlog = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:3000/blog", data, {
+      const res = await axios.post("https://blog-app-backend-cyan.vercel.app/blog", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

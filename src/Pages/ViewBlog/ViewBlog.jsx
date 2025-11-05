@@ -59,7 +59,7 @@ const ViewBlog = () => {
               {/* Blog Image */}
               <div className="relative overflow-hidden h-56 bg-gradient-to-br from-[#273469] to-[#1e2749]">
                 <img
-                  src={`http://localhost:3000/${blog.img}`}
+                  src={`https://blog-app-backend-cyan.vercel.app/${blog.img}`}
                   alt={blog.title}
                   className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2"
                   onError={(e) => {

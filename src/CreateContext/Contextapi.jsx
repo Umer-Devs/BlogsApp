@@ -13,7 +13,7 @@ export const BlogsData = createContext();
    
     const fetchData = async ()=>{
     try {
-        const res = await axios.get("http://localhost:3000/blog");
+        const res = await axios.get("https://blog-app-backend-cyan.vercel.app/blog");
         setBlogData(res.data);
         
         
