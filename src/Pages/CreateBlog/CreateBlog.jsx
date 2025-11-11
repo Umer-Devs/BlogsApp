@@ -46,53 +46,51 @@ const CreateBlog = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-   
-    if (!form.title || !form.category || !form.blogData) {
-      alert("Please fill in all required fields");
-      return;
-    }
+  if (!form.title || !form.category || !form.blogData) {
+    alert("Please fill in all required fields");
+    return;
+  }
 
-    const data = new FormData();
-    data.append("title", form.title);
-    data.append("category", form.category);
-   
-      data.append("img", form.img); 
-    
-    data.append("blogData", form.blogData);
+  const data = new FormData();
+  data.append("title", form.title);
+  data.append("category", form.category);
+  if (form.img) {
+    data.append("img", form.img); // sirf tab append karo jab img ho
+  }
+  data.append("blogData", form.blogData);
 
-    for (let [key, value] of data.entries()) {
-      console.log(key, value);
-    }
-
-    try {
-      const res = await axios.post("https://blog-app-backend-cyan.vercel.app/blog", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      fetchData()
-      
-      alert("Blog published successfully!");
-      console.log("Response:", res.data);
-      
-      // Reset form after successful submission
-      setForm({
-        title: "",
-        category: "",
-        img: null,
-        blogData: "",
-      });
-      setImagePreview("");
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
+  try {
+    const res = await axios.post(
+      "https://blog-app-backend-cyan.vercel.app/blog",
+      data,
+      {
+        // Headers mat do! Axios automatically set karega
+        // "Content-Type": "multipart/form-data"  → REMOVE THIS
       }
-    } catch (error) {
-      console.error("Error:", error.response?.data || error.message);
-      alert("Failed to publish blog. Please try again.");
+    );
+
+    fetchData();
+    alert("Blog published successfully!");
+    console.log("Response:", res.data);
+
+    // Reset form
+    setForm({
+      title: "",
+      category: "",
+      img: null,
+      blogData: "",
+    });
+    setImagePreview("");
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
     }
-  };
+  } catch (error) {
+    console.error("Error:", error.response?.data || error.message);
+    alert("Failed to publish blog: " + (error.response?.data?.message || error.message));
+  }
+};
 
   // Clean up object URL when component unmounts
   React.useEffect(() => {
